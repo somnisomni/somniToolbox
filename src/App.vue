@@ -1,14 +1,24 @@
 <template>
-  <VApp>
-    <div>App</div>
+  <VApp theme="dark">
+    <AppSysbar />
+    <AppBar />
 
-    <RouterView />
+    <VMain>
+      <RouterView />
+    </VMain>
   </VApp>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
+import AppSysbar from "./components/AppSysbar.vue";
+import AppBar from "./components/AppBar.vue";
 
-@Component
+@Component({
+  components: {
+    AppSysbar,
+    AppBar,
+  },
+})
 export default class App extends Vue { }
 </script>
