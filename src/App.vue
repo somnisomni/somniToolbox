@@ -1,12 +1,13 @@
 <template>
-  <div>App</div>
+  <VApp>
+    <div>App</div>
 
-  <RouterView />
+    <RouterView />
+  </VApp>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
-import { RouterView } from "vue-router";
 
 @Component
 export default class App extends Vue { }
