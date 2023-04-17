@@ -1,0 +1,8 @@
+{
+  "name": "somni::Toolbox",
+  "short_name": "somni::Toolbox",
+  "start_url": ".",
+  "id": "/",
+  "display": "standalone",
+  "description": "A web-based utility collections"
+}
