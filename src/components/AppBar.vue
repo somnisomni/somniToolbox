@@ -1,12 +1,18 @@
 <template>
   <VAppBar>
+    <!-- Navigation Drawer toggle button -->
     <VAppBarNavIcon icon="mdi-menu" />
-    <VBtn v-if="!isHomeRoute"
-          :to="{ name: 'home' }"
-          icon="mdi-home"
-          flat />
-    <VAppBarTitle>{{ APP_NAME }}</VAppBarTitle>
 
+    <!-- Home button / App title -->
+    <VSlideXTransition group leave-absolute>
+      <VBtn v-if="!isHomeRoute"
+            :to="{ name: 'home' }"
+            icon="mdi-home"
+            flat />
+      <VAppBarTitle>{{ APP_NAME }}</VAppBarTitle>
+    </VSlideXTransition>
+
+    <!-- App bar menu -->
     <VMenu>
       <template v-slot:activator="{ props }">
         <VAppBarNavIcon icon="mdi-dots-vertical" v-bind="props" />
