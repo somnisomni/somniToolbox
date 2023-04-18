@@ -9,7 +9,7 @@
             :to="{ name: 'home' }"
             icon="mdi-home"
             flat />
-      <VAppBarTitle>{{ APP_NAME }}</VAppBarTitle>
+      <VAppBarTitle v-html="APP_NAME_HTML" /> <!-- eslint-disable-line vue/no-v-text-v-html-on-component -->
     </VSlideXTransition>
 
     <!-- App bar menu -->
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { APP_NAME } from "@/constants";
+import { APP_NAME_HTML } from "@/constants";
 import { Component, Vue } from "vue-facing-decorator";
 
 interface AppMenuData {
@@ -45,7 +45,7 @@ interface AppMenuData {
 
 @Component
 export default class AppBar extends Vue {
-  readonly APP_NAME = APP_NAME;
+  readonly APP_NAME_HTML = APP_NAME_HTML;
 
   readonly APP_MENU_DATA: AppMenuData[] = [
     {
