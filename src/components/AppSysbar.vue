@@ -10,14 +10,19 @@ import { Component, Vue } from "vue-facing-decorator";
 @Component
 export default class AppSysbar extends Vue {
   timeString: string = "00:00";
+  timeLastMinute: number = 0;
 
   mounted(): void {
     const updateTime = () => {
       const now = new Date();
-      const hour = String(now.getHours()).padStart(2, "0");
-      const minute = String(now.getMinutes()).padStart(2, "0");
-      const second = String(now.getSeconds()).padStart(2, "0");
-      this.timeString = `${hour}:${minute}:${second}`;
+
+      if(this.timeLastMinute !== now.getMinutes()) {
+        this.timeLastMinute = now.getMinutes();
+
+        const hour = String(now.getHours()).padStart(2, "0");
+        const minute = String(now.getMinutes()).padStart(2, "0");
+        this.timeString = `${hour}:${minute}`;
+      }
     };
 
     updateTime();
