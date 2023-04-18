@@ -1,12 +1,9 @@
 // import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { ref, type Ref } from "vue";
 
 export const useAppStore = defineStore("app", () => {
-  /* const count = ref(0);
-  const doubleCount = computed(() => count.value * 2);
-  function increment() {
-    count.value++;
-  }
+  const theme: Ref<"light" | "dark"> = ref("dark");
 
-  return { count, doubleCount, increment }; */
+  return { theme };
 });

@@ -1,5 +1,5 @@
 <template>
-  <VApp theme="dark">
+  <VApp :theme="appStore.theme">
     <AppSysbar />
     <AppBar />
 
@@ -13,6 +13,7 @@
 import { Component, Vue } from "vue-facing-decorator";
 import AppSysbar from "./components/AppSysbar.vue";
 import AppBar from "./components/AppBar.vue";
+import { useAppStore } from "./stores/app";
 
 @Component({
   components: {
@@ -20,5 +21,8 @@ import AppBar from "./components/AppBar.vue";
     AppBar,
   },
 })
-export default class App extends Vue { }
+export default class App extends Vue {
+  // ... is this right way to use Pinia store in class component?
+  readonly appStore = useAppStore();
+}
 </script>
