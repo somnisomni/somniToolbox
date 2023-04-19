@@ -12,49 +12,22 @@
       <VAppBarTitle v-html="APP_NAME_HTML" /> <!-- eslint-disable-line vue/no-v-text-v-html-on-component -->
     </VSlideXTransition>
 
-    <!-- App bar menu -->
-    <VMenu>
-      <template v-slot:activator="{ props }">
-        <VAppBarNavIcon icon="mdi-dots-vertical" v-bind="props" />
-      </template>
-
-      <VList>
-        <VListItem v-for="item in APP_MENU_DATA"
-                   :key="item.id"
-                   :value="item.id"
-                   :prepend-icon="item.icon"
-                   :to="item.route">
-          <VListItemTitle>{{ item.title }}</VListItemTitle>
-        </VListItem>
-      </VList>
-    </VMenu>
+    <AppBarMenu />
   </VAppBar>
-
 </template>
 
 <script lang="ts">
 import { APP_NAME_HTML } from "@/constants";
 import { Component, Vue } from "vue-facing-decorator";
+import AppBarMenu from "./AppBarMenu.vue";
 
-interface AppMenuData {
-  id: string,
-  title: string,
-  icon: string,
-  route: string,
-}
-
-@Component
+@Component({
+  components: {
+    AppBarMenu,
+  },
+})
 export default class AppBar extends Vue {
   readonly APP_NAME_HTML = APP_NAME_HTML;
-
-  readonly APP_MENU_DATA: AppMenuData[] = [
-    {
-      "id": "help",
-      "title": "Help",
-      "icon": "mdi-help-circle",
-      "route": "/help",
-    },
-  ];
 
   get isHomeRoute(): boolean {
     return this.$route.name === "home";
