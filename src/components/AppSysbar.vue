@@ -1,14 +1,18 @@
 <template>
   <VSystemBar>
+    <span>{{ APP_VERSION }}</span>
+    <VSpacer />
     <span>{{ timeString }}</span>
   </VSystemBar>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-facing-decorator";
+import { APP_VERSION } from "@/constants";
 
 @Component
 export default class AppSysbar extends Vue {
+  APP_VERSION = APP_VERSION;
   timeString: string = "00:00";
   timeLastMinute: number = 0;
 
